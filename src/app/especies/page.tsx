@@ -7,7 +7,7 @@ import SpeciesSearch from "@/components/speciesSearch";
 export default function Especies() {
   const query = useGetSpecies();
 
-  const { get, set } = useSearchParams();
+  const { get } = useSearchParams();
   const sppId = get("sppId");
   const speciesData = query?.data?.find((spp) => "" + spp.id === sppId);
 

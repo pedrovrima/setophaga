@@ -3,7 +3,6 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 export type SpeciesReturn = {
   createdAt: string;
   enName: string;
-  featuredPicture: Object;
   genusId: number;
   id: number;
   ptName: string;
