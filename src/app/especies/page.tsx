@@ -1,11 +1,8 @@
 "use client";
 
-import { api } from "@/trpc/react";
 import { useSearchParams } from "next/navigation";
 import useGetSpecies from "../hooks/useGetSpecies";
 import SpeciesSearch from "@/components/speciesSearch";
-
-const data = [{ id: 1 }, { id: 2 }];
 
 export default function Especies() {
   const query = useGetSpecies();

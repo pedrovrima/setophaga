@@ -25,7 +25,7 @@ export default function SpeciesSearch() {
         <div className="absolute z-10 w-full border-[1px] border-slate-100  px-2 py-4">
           <ul>
             {filteredValues.map((val) => (
-              <Link href={"/especies?sppId=" + val?.id || ""}>
+              <Link key={val.id} href={"/especies?sppId=" + val?.id || ""}>
                 <li className="px-2 py-[1px] hover:bg-slate-300">
                   <div className="flex justify-between">
                     <p>{boldifyTerm(val.stringFound, searchValue)}</p>
@@ -43,7 +43,7 @@ export default function SpeciesSearch() {
   );
 }
 
-function boldifyTerm(str: String, term: string) {
+function boldifyTerm(str: string, term: string) {
   const splitString = str.split(new RegExp(term, "gi"));
 
   return (

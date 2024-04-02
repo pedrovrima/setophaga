@@ -4,8 +4,8 @@ import { SpeciesReturn } from "@/server/api/routers/species";
 
 type SearchReturn = {
   id: number;
-  stringFound: String;
-  scientificName: String;
+  stringFound: string;
+  scientificName: string;
 };
 
 type HookReturn = [SearchReturn[] | undefined, boolean];

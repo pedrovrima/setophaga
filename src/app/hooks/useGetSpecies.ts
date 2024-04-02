@@ -21,7 +21,7 @@ const useGetSpecies = () => {
   if (cachedData) {
     return {
       ...query,
-      data: query.data || (JSON.parse(cachedData) as SpeciesReturn[]),
+      data: query.data ?? (JSON.parse(cachedData) as SpeciesReturn[]),
     };
   }
   return query;
