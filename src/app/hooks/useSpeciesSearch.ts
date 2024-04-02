@@ -8,7 +8,9 @@ type SearchReturn = {
   scientificName: String;
 };
 
-export default function useSpeciesSearch(searchValue: string): SearchReturn[] {
+type HookReturn = [SearchReturn[] | undefined, boolean];
+
+export default function useSpeciesSearch(searchValue: string): HookReturn {
   const query = useGetSpecies();
   const [filteredValues, setFilteredValues] = useState<SearchReturn[]>([]);
 
@@ -38,18 +40,17 @@ export default function useSpeciesSearch(searchValue: string): SearchReturn[] {
               scientificName: value.scientificName,
               stringFound: value.ptName,
             });
-          console.log(container);
 
           return container;
         },
         [],
       );
 
-      console.log(queriedData);
       setFilteredValues(queriedData);
     }
   }, [searchValue, query.data]);
-  if (searchValue.length < 2) return [];
+  if (!query.data) return [undefined, query.isLoading];
+  if (searchValue.length < 2) return [[], false];
 
-  return filteredValues;
+  return [filteredValues, false];
 }

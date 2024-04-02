@@ -15,7 +15,7 @@ export default function Especies() {
   const speciesData = query?.data?.find((spp) => "" + spp.id === sppId);
 
   return (
-    <div>
+    <div className="mx-auto max-w-[800px] py-[100px]">
       {speciesData ? (
         <div>
           <p>{speciesData.id}</p>

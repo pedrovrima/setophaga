@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Input } from "./ui/input";
 import useSpeciesSearch from "@/app/hooks/useSpeciesSearch";
@@ -5,15 +7,21 @@ import Link from "next/link";
 
 export default function SpeciesSearch() {
   const [searchValue, setSearchValue] = useState("");
-  const filteredValues = useSpeciesSearch(searchValue);
+  const [filteredValues, isLoading] = useSpeciesSearch(searchValue);
   return (
-    <div className="relative max-w-[500px]">
+    <div className="relative mx-auto w-[500px]">
       <Input
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
-        className="z-50 bg-white"
+        className="z-50 bg-white text-black"
+        placeholder="Digite um termo"
       />
-      {filteredValues.length > 0 && (
+      {(!filteredValues || isLoading) && (
+        <div className="absolute z-10 w-full border-[1px] border-slate-100 bg-white px-2  py-4 text-black">
+          Loading...
+        </div>
+      )}
+      {filteredValues && filteredValues.length > 0 && (
         <div className="absolute z-10 w-full border-[1px] border-slate-100  px-2 py-4">
           <ul>
             {filteredValues.map((val) => (

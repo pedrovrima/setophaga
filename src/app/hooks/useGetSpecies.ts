@@ -5,7 +5,10 @@ import { api } from "@/trpc/react";
 import { useEffect, useState } from "react";
 
 const useGetSpecies = () => {
-  const query = api.species.getAllSpecies.useQuery();
+  const input = undefined as void;
+  const query = api.species.getAllSpecies.useQuery(input, {
+    refetchInterval: 900000,
+  });
 
   const cachedData = window.localStorage.getItem("speciesData");
 
