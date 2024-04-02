@@ -17,7 +17,12 @@ export const speciesRouter = createTRPCRouter({
       "https://ilicura.vercel.app/api/trpc/species.getAllSpecies",
     );
 
-    const returnedData = await data?.json();
-    return returnedData?.result?.data?.json as SpeciesReturn[];
+    if (data) {
+      const returnedData = await data?.json();
+      if (returnedData) {
+        return returnedData?.result?.data?.json as SpeciesReturn[];
+      }
+    }
+    throw new Error();
   }),
 });
