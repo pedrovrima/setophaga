@@ -44,13 +44,31 @@ export default function SpeciesSearch() {
 }
 
 function boldifyTerm(str: string, term: string) {
-  const splitString = str.split(new RegExp(term, "gi"));
-
+  const splitString = str.split(new RegExp(term, "i"));
+  const setFirstUpperCase = (term: string, i: number) => {
+    if (
+      str[0]?.startsWith(str[0].toUpperCase()) &&
+      splitString[0] === "" &&
+      i === 1
+    ) {
+      return term.charAt(0).toUpperCase() + term.slice(1);
+    }
+    return term.toLowerCase();
+  };
   return (
     <span>
-      {splitString[0]}
-      <span className="font-bold">{term}</span>
-      {splitString[1]}
+      {splitString.map((string, i) =>
+        i > 0 ? (
+          <>
+            <span key={string + i} className="font-bold">
+              {setFirstUpperCase(term, i)}
+            </span>
+            {string}
+          </>
+        ) : (
+          <span key={string + i}>{string}</span>
+        ),
+      )}
     </span>
   );
 }

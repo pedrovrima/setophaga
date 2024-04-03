@@ -14,7 +14,7 @@ export default function Home() {
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Dicionário das Aves
         </h1>
-        <div className="max-w-[600px]">
+        <div className="flex max-w-[600px] flex-col items-center gap-12">
           <SpeciesSearch />
 
           {!isSignedIn ? (
@@ -22,7 +22,12 @@ export default function Home() {
               <SignInButton>Logar</SignInButton>
             </div>
           ) : (
-            <Link href="/add">Adicionar</Link>
+            <Link
+              className="bg-primary-foreground text-primary w-fit rounded-md px-4  py-2"
+              href="/add"
+            >
+              Adicionar
+            </Link>
           )}
         </div>
       </div>
