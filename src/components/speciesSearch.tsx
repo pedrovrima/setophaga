@@ -22,7 +22,7 @@ export default function SpeciesSearch() {
         </div>
       )}
       {filteredValues && filteredValues.length > 0 && (
-        <div className="absolute z-10 w-full border-[1px] border-slate-100  px-2 py-4">
+        <div className="absolute z-10 w-full border-[1px] border-slate-100 bg-white  px-2 py-4 text-gray-900">
           <ul>
             {filteredValues.map((val) => (
               <Link key={val.id} href={"/especies?sppId=" + val?.id || ""}>

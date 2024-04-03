@@ -1,3 +1,3 @@
 export default function Add() {
-  return <p>oi</p>;
+  return <p>Em breve</p>;
 }
