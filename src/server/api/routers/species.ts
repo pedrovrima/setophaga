@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export type SpeciesReturn = {
@@ -19,8 +18,10 @@ export const speciesRouter = createTRPCRouter({
     );
 
     if (data) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const returnedData = await data?.json();
       if (returnedData) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         return returnedData?.result?.data?.json as SpeciesReturn[];
       }
     }
