@@ -1,6 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import useGetSpecies from "@/app/hooks/useGetSpecies";
-import { SpeciesReturn } from "@/server/api/routers/species";
 
 type SearchReturn = {
   id: number;

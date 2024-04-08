@@ -1,8 +1,8 @@
 "use client";
 
-import { SpeciesReturn } from "@/server/api/routers/species";
+import type { SpeciesReturn } from "@/server/api/routers/species";
 import { api } from "@/trpc/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const useGetSpecies = () => {
   const input = undefined as void;
@@ -10,7 +10,7 @@ const useGetSpecies = () => {
     refetchInterval: 900000,
   });
 
-  const cachedData = window.localStorage.getItem("speciesData");
+  const cachedData = window?.localStorage.getItem("speciesData");
 
   useEffect(() => {
     if (query.data) {

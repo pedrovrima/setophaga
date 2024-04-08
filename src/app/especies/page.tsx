@@ -3,9 +3,11 @@
 import { useSearchParams } from "next/navigation";
 import useGetSpecies from "../hooks/useGetSpecies";
 import SpeciesSearch from "@/components/speciesSearch";
+import { SignInButton, useAuth } from "@clerk/nextjs";
 
 export default function Especies() {
   const query = useGetSpecies();
+  const { isSignedIn } = useAuth();
 
   const { get } = useSearchParams();
   const sppId = get("sppId");
@@ -19,6 +21,13 @@ export default function Especies() {
           <p>{speciesData.scientificName}</p>
           <p>{speciesData.ptName}</p>
           <p>{speciesData.enName}</p>
+          {isSignedIn ? (
+            <button>Addicionar Vernaculo</button>
+          ) : (
+            <SignInButton redirectUrl={`/add?sppId=${speciesData.id}`}>
+              Para adicionar um vernaculo, faça o login
+            </SignInButton>
+          )}
         </div>
       ) : (
         <SpeciesSearch />
