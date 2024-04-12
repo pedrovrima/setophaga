@@ -50,7 +50,9 @@ export default function useSpeciesSearch(searchValue: string): HookReturn {
       );
 
       setFilteredValues(queriedData);
+      return;
     }
+    setFilteredValues([]);
   }, [searchValue, query.data]);
   if (!query.data) return [undefined, query.isLoading];
   if (searchValue.length < 3) return [[], false];
