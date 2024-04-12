@@ -11,20 +11,20 @@ export default function Especies() {
 
   const { get } = useSearchParams();
   const sppId = get("sppId");
-  const speciesData = query?.data?.find((spp) => "" + spp.id === sppId);
+  const speciesData = query?.data?.find((spp) => "" + spp.Evaldo__c === sppId);
 
   return (
     <div className="mx-auto max-w-[800px] py-[100px]">
       {speciesData ? (
         <div>
-          <p>{speciesData.id}</p>
-          <p>{speciesData.scientificName}</p>
-          <p>{speciesData.ptName}</p>
-          <p>{speciesData.enName}</p>
+          <p>{speciesData.Evaldo__c}</p>
+          <p>{speciesData.Name}</p>
+          <p>{speciesData.NVP__c}</p>
+          <p>{speciesData.USName__c}</p>
           {isSignedIn ? (
             <button>Addicionar Vernaculo</button>
           ) : (
-            <SignInButton redirectUrl={`/add?sppId=${speciesData.id}`}>
+            <SignInButton redirectUrl={`/add?sppId=${speciesData.Evaldo__c}`}>
               Para adicionar um vernaculo, faça o login
             </SignInButton>
           )}

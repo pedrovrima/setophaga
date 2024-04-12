@@ -1,6 +1,6 @@
 "use client";
 
-import type { SpeciesReturn } from "@/server/api/routers/species";
+import type { BirdRecord } from "@/server/api/routers/species";
 import { api } from "@/trpc/react";
 import { useEffect } from "react";
 
@@ -21,7 +21,7 @@ const useGetSpecies = () => {
   if (cachedData) {
     return {
       ...query,
-      data: query.data ?? (JSON.parse(cachedData) as SpeciesReturn[]),
+      data: query.data ?? (JSON.parse(cachedData) as BirdRecord[]),
     };
   }
   return query;
