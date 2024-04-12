@@ -5,7 +5,7 @@ export type LocaleReturn = {
   cities: string[];
 };
 
-type Municipio = {
+export type Municipio = {
   "municipio-id": number;
   "municipio-nome": string;
   "microrregiao-id": number;

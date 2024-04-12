@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import useGetSpecies from "@/app/hooks/useGetSpecies";
-import type { BirdRecord } from "@/server/api/routers/species";
+import type { BirdRecord, Criteria } from "@/server/api/routers/species";
 
 type SearchReturn = {
   id: number;
@@ -30,7 +30,7 @@ const criterias = [
   "Spanish__c",
   "Swedish__c",
   "USName__c",
-];
+] as Criteria[];
 
 export default function useSpeciesSearch(searchValue: string): HookReturn {
   const query = useGetSpecies();
@@ -40,7 +40,7 @@ export default function useSpeciesSearch(searchValue: string): HookReturn {
     if (query.data && searchValue.length > 2) {
       const queriedData = query.data.reduce(
         (container: SearchReturn[], value) => {
-          criterias.map((crt: string) => {
+          criterias.map((crt) => {
             searchByCriteria(crt, value, searchValue, container);
           });
 
@@ -59,15 +59,15 @@ export default function useSpeciesSearch(searchValue: string): HookReturn {
 }
 
 const searchByCriteria = (
-  criteria: string,
+  criteria: Criteria,
   value: BirdRecord,
   searchValue: string,
   container: SearchReturn[],
 ): void => {
-  value[criteria]?.toLowerCase().includes(searchValue.toLowerCase()) &&
+  value[criteria]?.toLowerCase()?.includes(searchValue.toLowerCase()) &&
     container.push({
       id: value.Evaldo__c,
       scientificName: value.Name,
-      stringFound: value[criteria]!,
+      stringFound: value[criteria],
     });
 };

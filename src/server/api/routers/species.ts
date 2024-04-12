@@ -10,6 +10,26 @@ interface SalesforceAccessToken {
   api_instance_url: string;
 }
 
+export enum Criteria {
+  Danish__c = "Danish__c",
+  Dutch__c = "Dutch__c",
+  Estonian__c = "Estonian__c",
+  Finnish__c = "Finnish__c",
+  French__c = "French__c",
+  German__c = "German__c",
+  Hungarian__c = "Hungarian__c",
+  Japanese__c = "Japanese__c",
+  Name = "Name",
+  Norwegian__c = "Norwegian__c",
+  NVP__c = "NVP__c",
+  Polish__c = "Polish__c",
+  Russian__c = "Russian__c",
+  Slovak__c = "Slovak__c",
+  Spanish__c = "Spanish__c",
+  Swedish__c = "Swedish__c",
+  USName__c = "USName__c",
+}
+
 export interface BirdRecord {
   Danish__c: string;
   Dutch__c: string;
@@ -35,7 +55,6 @@ export interface BirdRecord {
   Swedish__c: string;
   Taxon__c: string;
   USName__c: string;
-  [key: string]: string | number | undefined;
 }
 
 export const speciesRouter = createTRPCRouter({

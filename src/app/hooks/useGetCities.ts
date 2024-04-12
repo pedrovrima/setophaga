@@ -1,5 +1,6 @@
 "use client";
 
+import type { LocaleReturn } from "@/server/api/routers/brazilian_cities";
 import { api } from "@/trpc/react";
 import { useEffect } from "react";
 
@@ -20,7 +21,7 @@ const useGetCities = () => {
   if (cachedData) {
     return {
       ...query,
-      data: query.data ?? JSON.parse(cachedData),
+      data: query.data ?? (JSON.parse(cachedData) as LocaleReturn),
     };
   }
   return query;
