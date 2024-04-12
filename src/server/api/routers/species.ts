@@ -47,7 +47,7 @@ export const speciesRouter = createTRPCRouter({
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: "grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIzTVZHOU00M2lycjlKQXV6cFhGcUo4aGthOFZ0YmozYjFUOHowTnFYVXloaHJvbkU0bldqRXV3c3VlcF84M1RyQkxkUGFWU0VQX1NiNjE0V1F3QzBOIiwic3ViIjoiYXZlcy5wZWRyb3ZyaW1hQGdtYWlsLmNvbS50cmFkIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LnNhbGVzZm9yY2UuY29tIiwiZXhwIjoiMjAyODIxOTM0NiJ9.ma44dj_88R4ALrJkTlRDV5qbTyXLwcecbQyywOLh4XbSWjGkLPsIxzIOj6OlGUEVS7CAWk4dEL9hvWm41XGs6c-3ktnwRh9kasiH3f3vc5P0L4RAS6PFt0r0SvJ_MOmfa9pdyfEtraubkK_kXhf4Y-T6NSMMeTx2jEoAnHEYgwvjhZMlZH8NUByGHZZSdpmtdxmTeb9E2p4-R6qeEoCd9gXvkhoCbisflKQHmurPNTS2RljP8zbubMSbDlw6PPGRmusNO-SDfqadUD2-ec6j2o35sI70ltTD5ZCFJn2uJkd6mP4IraLw0_Q8-q9pBmMGC0uAiSvCTnzH5jbjau0TwQ",
+        body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${process.env.JWT}`,
       },
     );
 
@@ -66,6 +66,7 @@ export const speciesRouter = createTRPCRouter({
     if (data) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const returnedData = await data?.json();
+
       if (returnedData) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         return returnedData?.records as BirdRecord[];
