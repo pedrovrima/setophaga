@@ -7,6 +7,9 @@ import withPWAInit from "@ducanh2912/next-pwa";
 
 const withPWA = withPWAInit({
   dest: "public",
+  workboxOptions: {
+    additionalManifestEntries: ["/especies", "/add"],
+  },
 });
 
 /** @type {import("next").NextConfig} */
