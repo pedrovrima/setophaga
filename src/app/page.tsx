@@ -14,7 +14,7 @@ export default function Home() {
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Dicionário das Aves
         </h1>
-        <div className="flex max-w-[600px] flex-col items-center gap-12">
+        <div className="flex flex-col items-center gap-12 px-12">
           <SpeciesSearch />
 
           {!isSignedIn ? (

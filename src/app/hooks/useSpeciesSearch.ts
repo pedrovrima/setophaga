@@ -37,7 +37,7 @@ export default function useSpeciesSearch(searchValue: string): HookReturn {
   const [filteredValues, setFilteredValues] = useState<SearchReturn[]>([]);
 
   useEffect(() => {
-    if (query.data && searchValue.length > 2) {
+    if (query.data && searchValue.length > 3) {
       const queriedData = query.data.reduce(
         (container: SearchReturn[], value) => {
           criterias.map((crt) => {
@@ -55,7 +55,7 @@ export default function useSpeciesSearch(searchValue: string): HookReturn {
     setFilteredValues([]);
   }, [searchValue, query.data]);
   if (!query.data) return [undefined, query.isLoading];
-  if (searchValue.length < 3) return [[], false];
+  if (searchValue.length < 4) return [[], false];
 
   return [filteredValues, false];
 }

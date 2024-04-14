@@ -9,7 +9,7 @@ export default function SpeciesSearch() {
   const [searchValue, setSearchValue] = useState("");
   const [filteredValues, isLoading] = useSpeciesSearch(searchValue);
   return (
-    <div className="relative mx-auto w-[500px]">
+    <div className="relative mx-auto w-[500px] max-w-[75%]">
       <Input
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
@@ -25,7 +25,10 @@ export default function SpeciesSearch() {
         <div className="absolute z-10 w-full border-[1px] border-slate-100 bg-white  px-2 py-4 text-gray-900">
           <ul>
             {filteredValues.map((val) => (
-              <Link key={val.id} href={"/especies?sppId=" + val?.id || ""}>
+              <Link
+                key={val.id + val.stringFound}
+                href={"/especies?sppId=" + val?.id || ""}
+              >
                 <li className="px-2 py-[1px] hover:bg-slate-300">
                   <div className="flex justify-between">
                     <p>{boldifyTerm(val.stringFound, searchValue)}</p>
