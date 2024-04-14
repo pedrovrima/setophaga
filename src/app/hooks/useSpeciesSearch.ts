@@ -32,29 +32,30 @@ const criterias = [
   "USName__c",
 ] as Criteria[];
 
-export default function useSpeciesSearch(searchValue: string): HookReturn {
+export default function useSpeciesSearch(
+  data: BirdRecord[],
+  searchValue: string,
+): HookReturn {
+  console.log(data);
   const query = useGetSpecies();
   const [filteredValues, setFilteredValues] = useState<SearchReturn[]>([]);
 
   useEffect(() => {
-    if (query.data && searchValue.length > 3) {
-      const queriedData = query.data.reduce(
-        (container: SearchReturn[], value) => {
-          criterias.map((crt) => {
-            searchByCriteria(crt, value, searchValue, container);
-          });
+    if (data) {
+      const queriedData = data.reduce((container: SearchReturn[], value) => {
+        criterias.map((crt) => {
+          searchByCriteria(crt, value, searchValue, container);
+        });
 
-          return container;
-        },
-        [],
-      );
+        return container;
+      }, []);
 
       setFilteredValues(queriedData);
       return;
     }
     setFilteredValues([]);
-  }, [searchValue, query.data]);
-  if (!query.data) return [undefined, query.isLoading];
+  }, [searchValue, data]);
+  if (!data) return [undefined, query.isLoading];
   if (searchValue.length < 4) return [[], false];
 
   return [filteredValues, false];

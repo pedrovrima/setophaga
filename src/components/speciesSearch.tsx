@@ -4,10 +4,13 @@ import { useState } from "react";
 import { Input } from "./ui/input";
 import useSpeciesSearch from "@/app/hooks/useSpeciesSearch";
 import Link from "next/link";
+import type { BirdRecord } from "@/server/api/routers/species";
 
-export default function SpeciesSearch() {
+export default function SpeciesSearch({ data }: { data: BirdRecord[] }) {
+  console.log(data);
+
   const [searchValue, setSearchValue] = useState("");
-  const [filteredValues, isLoading] = useSpeciesSearch(searchValue);
+  const [filteredValues, isLoading] = useSpeciesSearch(data, searchValue);
   return (
     <div className="relative mx-auto w-[500px] max-w-[75%]">
       <Input

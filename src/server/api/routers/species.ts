@@ -88,7 +88,7 @@ export const speciesRouter = createTRPCRouter({
 
       if (returnedData) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        return returnedData?.records as BirdRecord[];
+        return returnedData?.records as { data: BirdRecord[] };
       }
     }
     throw new Error();
