@@ -15,7 +15,7 @@ const withPWA = withPWAInit({
   reloadOnOnline: true,
   disable: process.env.NODE_ENV === "development",
   workboxOptions: {
-    additionalManifestEntries: [...urls, { url: "/add", revision: "1" }],
+    additionalManifestEntries: [...urls],
   },
 });
 
