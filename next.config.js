@@ -13,8 +13,9 @@ const withPWA = withPWAInit({
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
+  disable: process.env.NODE_ENV === "development",
   workboxOptions: {
-    additionalManifestEntries: [{ url: "/add", revision: "asdasdasd1" }],
+    additionalManifestEntries: [...urls, { url: "/add", revision: "1" }],
   },
 });
 
