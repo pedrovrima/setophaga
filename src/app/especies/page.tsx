@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import useGetSpecies from "../hooks/useGetSpecies";
 import SpeciesSearch from "@/components/speciesSearch";
-import { SignInButton, useAuth } from "@clerk/nextjs";
+// import { SignInButton, useAuth } from "@clerk/nextjs";
 
 export default function Especies() {
   // const query = useGetSpecies();
