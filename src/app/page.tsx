@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { SignInButton } from "@clerk/nextjs";
-import { useAuth } from "@clerk/nextjs";
+// import { SignInButton } from "@clerk/nextjs";
+// import { useAuth } from "@clerk/nextjs";
 import SpeciesSearch from "@/components/speciesSearch";
 import { api } from "@/trpc/server";
 import { BirdRecord } from "@/server/api/routers/species";
@@ -23,7 +23,7 @@ export default async function Home() {
 
           {!false ? (
             <div className="bg-primary-foreground text-primary w-fit rounded-md px-4  py-2">
-              <SignInButton>Logar</SignInButton>
+              {/* <SignInButton>Logar</SignInButton> */}
             </div>
           ) : (
             <Link
