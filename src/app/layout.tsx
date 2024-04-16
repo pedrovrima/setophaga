@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
-// import { TRPCReactProvider } from "@/trpc/react";
+// import { ClerkProvider } from "@clerk/nextjs";
+import { TRPCReactProvider } from "@/trpc/react";
 import NavBar from "components/navbar";
 
 const inter = Inter({
