@@ -5,7 +5,6 @@ import { useAuth } from "@clerk/nextjs";
 import SpeciesSearch from "@/components/speciesSearch";
 import { api } from "@/trpc/server";
 import { BirdRecord } from "@/server/api/routers/species";
-import { spec } from "node:test/reporters";
 
 export default async function Home() {
   const speciesQuery = await api.species.getAllSpecies();

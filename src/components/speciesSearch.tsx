@@ -30,7 +30,7 @@ export default function SpeciesSearch({ data }: { data: BirdRecord[] }) {
             {filteredValues.map((val) => (
               <Link
                 key={val.id + val.stringFound}
-                href={"/especies?sppId=" + val?.id || ""}
+                href={"/especies/" + val?.id || ""}
               >
                 <li className="px-2 py-[1px] hover:bg-slate-300">
                   <div className="flex justify-between">
